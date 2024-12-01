@@ -1,0 +1,5 @@
+redis:
+  image: redis:latest
+  service:
+    name: redis
+    port: 6379
