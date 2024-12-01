@@ -1,0 +1,12 @@
+replicaCount: 1
+
+image:
+  repository: frontend-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+namespace: services
+
+service:
+  type: ClusterIP
+  port: 3000

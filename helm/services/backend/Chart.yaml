@@ -1,0 +1,4 @@
+apiVersion: v2
+name: backend
+description: A simple Spring Boot backend
+version: 0.1.0

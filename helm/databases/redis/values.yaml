@@ -1,0 +1,7 @@
+replicaCount: 1
+
+namespace: databases
+
+service:
+  type: ClusterIP
+  port: 6379
