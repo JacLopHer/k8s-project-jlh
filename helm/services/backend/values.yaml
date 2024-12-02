@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: https://github.com/JacLopHer/k8s-project-jlh/tree/main/backend
+  repository: JacLopHer/backend-app
   tag: latest
   pullPolicy: IfNotPresent
 
