@@ -1,36 +1,33 @@
 package com.example.backend;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/items")
 public class BackendController {
 
-    private List<String> items = new ArrayList<>();
+    @Autowired
+    private ItemService itemService;
 
-    @PostMapping("/create")
-    public String create(@RequestBody String item) {
-        items.add(item);
-        return "Item added";
+    @GetMapping
+    public List<Item> getAllItems() {
+        return itemService.findAll();
     }
 
-    @GetMapping("/read")
-    public List<String> read() {
-        return items;
+    @PostMapping
+    public Item createItem(@RequestBody Item item) {
+        return itemService.save(item);
     }
 
-    @PutMapping("/update/{index}")
-    public String update(@PathVariable int index, @RequestBody String item) {
-        items.set(index, item);
-        return "Item updated";
+    @PutMapping("/{id}")
+    public Item updateItem(@PathVariable Long id, @RequestBody Item item) {
+        return itemService.update(id, item);
     }
 
-    @DeleteMapping("/delete/{index}")
-    public String delete(@PathVariable int index) {
-        items.remove(index);
-        return "Item deleted";
+    @DeleteMapping("/{id}")
+    public void deleteItem(@PathVariable Long id) {
+        itemService.delete(id);
     }
 }

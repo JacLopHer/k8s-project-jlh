@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-configuration
+  namespace: ingress-nginx
+data:
+  # Configuración para aumentar el tamaño del cuerpo de la solicitud (útil para cargas grandes)
+  proxy-body-size: "8m"
+  
+  # Configuración para habilitar CORS si es necesario
+  enable-cors: "true"
+  
+  # Configuración para habilitar el acceso desde cualquier origen
+  cors-allow-all-origins: "true"
+  
+  # Otros parámetros que puedas necesitar
+  use-http2: "true"
