@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: frontend-app
+  repository: ghcr.io/jaclopher/frontend-app
   tag: latest
   pullPolicy: IfNotPresent
 
