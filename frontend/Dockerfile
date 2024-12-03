@@ -1,8 +1,33 @@
-FROM node:18-alpine
+# Use an official Node.js image as the base for building
+FROM node:16-alpine AS builder
+
+LABEL org.opencontainers.image.source="https://github.com/JacLopHer/k8s-project-jlh"
+
+# Set the working directory
 WORKDIR /app
-COPY package.json .
-RUN npm install
+
+# Copy only package.json and package-lock.json to leverage Docker caching
+COPY package*.json ./
+
+# Install dependencies only for production
+RUN npm install --production
+
+# Copy the rest of the application code
 COPY . .
+
+# Build the React app for production
 RUN npm run build
-EXPOSE 3000
-CMD ["npm", "start"]
+
+# Use a lightweight Nginx image to serve the app
+FROM nginx:alpine
+
+COPY ./images /images
+
+# Copy the build output from the builder stage
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Expose the port that Nginx is running on
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
