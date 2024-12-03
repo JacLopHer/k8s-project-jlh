@@ -2,6 +2,14 @@ replicaCount: 1
 
 namespace: databases
 
+image:
+  repository: "redis"
+  tag: "latest"
+
 service:
-  type: ClusterIP
+  name: "redis"
+  type: "ClusterIP"
   port: 6379
+
+app:
+  name: "redis"  

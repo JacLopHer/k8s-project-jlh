@@ -7,6 +7,13 @@ image:
 
 namespace: services
 
+app:
+  name: "spring" 
+
+containerPort: 8181
+
 service:
-  type: ClusterIP
-  port: 8080
+  name: "spring"
+  type: "ClusterIP"
+  port: 80 
+  targetPort: http-spring  

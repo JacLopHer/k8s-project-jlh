@@ -1,4 +1,6 @@
 apiVersion: v2
-name: redis
-description: Redis deployment for database management
+name: redis-helm-chart
+description: A simple Helm chart to deploy Redis
+type: application
 version: 0.1.0
+appVersion: "7.0.15"

@@ -1,23 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: {{ .Values.app.name }}
   namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.app.name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: frontend
+      app: {{ .Values.app.name }}
   template:
     metadata:
       labels:
-        app: frontend
+        app: {{ .Values.app.name }}
     spec:
       imagePullSecrets:
         - name: regcred
+      volumes:
+        - name: nginx-config-volume
+          configMap:
+            name: {{ .Values.nginxConfigMapName }}
+        - name: shared-storage
+          persistentVolumeClaim:
+            claimName: {{ .Values.pvcName }}
       containers:
-        - name: frontend
+        - name: {{ .Values.app.name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 3000
+            - containerPort: {{ .Values.containerPort }}
+              name: http-react
+          volumeMounts:
+            - name: nginx-config-volume
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: nginx.conf
+            - mountPath: /images  # Path inside the container
+              name: shared-storage
