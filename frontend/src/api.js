@@ -1,7 +1,8 @@
 // api.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/items'; // Endpoint base para el CRUD de ítems
+
+const API_URL = 'http://backend.servicios.svc.cluster.local:8181/api/items'; // Endpoint base para el CRUD de ítems
 
 // Crear un nuevo ítem (POST)
 export const createItem = async (newItem) => {

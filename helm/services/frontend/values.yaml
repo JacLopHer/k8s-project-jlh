@@ -1,15 +1,13 @@
 replicaCount: 1
 
 image:
-  repository: "ghcr.io/jaclopher/frontend-app"
+  repository: ghcr.io/jaclopher/frontend-app
   tag: "latest"
   pullPolicy: IfNotPresent
 
 containerPort: 80
 
-nginxConfigMapName: "nginx-config"  
-pvcName: "shared-pvc"  
-
+nginxConfigMapName: "nginx-config"
 
 namespace: "services"
 app:
