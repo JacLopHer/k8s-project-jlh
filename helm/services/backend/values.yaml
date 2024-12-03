@@ -8,12 +8,12 @@ image:
 namespace: services
 
 app:
-  name: "spring" 
+  name: "backend" 
 
 containerPort: 8181
 
 service:
-  name: "spring"
+  name: "backend"
   type: "ClusterIP"
   port: 80 
   targetPort: http-spring  

@@ -23,7 +23,7 @@ LABEL org.opencontainers.image.source="https://github.com/JacLopHer/k8s-project-
 WORKDIR /app
 
 # Copy the generated JAR file from the build stage
-COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /app/target/backend-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose port 8080 (default for Spring Boot)
 EXPOSE 8181
