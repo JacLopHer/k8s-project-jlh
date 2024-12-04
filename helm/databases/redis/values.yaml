@@ -13,3 +13,14 @@ service:
 
 app:
   name: "redis"  
+
+configmap:
+  enabled: true
+  name: redis-config 
+
+persistence:
+  enabled: true
+  size: 8Gi
+  storageClass: "standard"
+auth:
+  enabled: false
