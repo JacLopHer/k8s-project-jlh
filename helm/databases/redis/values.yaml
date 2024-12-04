@@ -14,9 +14,6 @@ service:
 app:
   name: "redis"  
 
-configmap:
-  enabled: true
-  name: redis-config 
 
 persistence:
   enabled: true
@@ -24,3 +21,7 @@ persistence:
   storageClass: "standard"
 auth:
   enabled: false
+
+configmap:
+  enabled: true
+  name: redis-config 
