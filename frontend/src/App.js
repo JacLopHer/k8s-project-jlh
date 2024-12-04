@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     // Obtener los items cuando el componente se monta
-    fetch('http://localhost:8080/api/items')
+    fetch('http://localhost:8181/api/items')
       .then(response => response.json())
       .then(data => setItems(data))
       .catch(error => console.error('Error fetching items:', error));
@@ -21,7 +21,7 @@ function App() {
     event.preventDefault();
     // Si hay un item siendo editado, realizamos un PUT
     if (editingItem) {
-      fetch(`http://localhost:8080/api/items/${editingItem.id}`, {
+      fetch(`http://localhost:8181/api/items/${editingItem.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newItem),
@@ -35,7 +35,7 @@ function App() {
         .catch(error => console.error('Error updating item:', error));
     } else {
       // Si no hay edición, realizamos un POST
-      fetch('http://localhost:8080/api/items', {
+      fetch('http://localhost:8181/api/items', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newItem),
@@ -55,7 +55,7 @@ function App() {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:8080/api/items/${id}`, {
+    fetch(`http://localhost:8181/api/items/${id}`, {
       method: 'DELETE',
     })
       .then(() => {

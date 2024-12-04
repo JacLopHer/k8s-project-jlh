@@ -16,4 +16,4 @@ service:
   name: "backend"
   type: "ClusterIP"
   port: 80 
-  targetPort: http-spring  
+  targetPort: 8181  

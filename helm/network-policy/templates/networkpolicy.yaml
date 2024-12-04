@@ -9,7 +9,7 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              name: servicios
+              name: services
       ports:
         - protocol: TCP
           port: 6379
